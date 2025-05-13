@@ -18,8 +18,8 @@ const Contact = () => {
     {
       icon: <FaPhone className="text-green-500" />,
       title: 'Phone',
-      content: '+91 9876543210', // Replace with your actual phone number
-      link: 'tel:+919876543210', // Replace with your actual phone number
+      content: '+91 9392533640', // Replace with your actual phone number
+      link: 'tel:+919392533640', // Replace with your actual phone number
     },
     {
       icon: <FaEnvelope className="text-blue-500" />,

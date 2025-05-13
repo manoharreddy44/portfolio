@@ -146,16 +146,16 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden px-1 py-10">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden px-2 sm:px-4 py-16 sm:py-20">
       {/* Floating dots background */}
       <div ref={dotsContainerRef} className="dots-bg"></div>
       
       {/* Background glow effects */}
-      <div className="hero-glow top-1/4 left-1/4 opacity-20"></div>
-      <div className="hero-glow bottom-1/4 right-1/4 opacity-10"></div>
+      <div className="hero-glow top-1/4 left-1/4 opacity-10 sm:opacity-20"></div>
+      <div className="hero-glow bottom-1/4 right-1/4 opacity-5 sm:opacity-10"></div>
       
       <div className="max-w-6xl mx-auto px-2 relative z-10">
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-10">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-10">
           {/* Profile Image - Left side */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
@@ -163,19 +163,19 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="md:w-2/5 flex justify-center"
           >
-            <div className="relative w-48 h-48 md:w-64 md:h-64">
+            <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
               {/* Circle border */}
-              <div className="absolute inset-0 rounded-full border-4 border-[var(--main-color)]/30 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full border-2 sm:border-4 border-[var(--main-color)]/30 animate-pulse"></div>
               
               {/* Rotating circle */}
               <motion.div
-                className="absolute inset-[-8px] rounded-full border-2 border-dashed border-[var(--main-color)]/20"
+                className="absolute inset-[-6px] sm:inset-[-8px] rounded-full border-[1px] sm:border-2 border-dashed border-[var(--main-color)]/20"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               ></motion.div>
               
               {/* Profile image */}
-              <div className="absolute inset-3 rounded-full overflow-hidden profile-image flex items-center justify-center">
+              <div className="absolute inset-2 sm:inset-3 rounded-full overflow-hidden profile-image flex items-center justify-center">
                 <img 
                   src="/images/profile.jpg" 
                   alt="Manohar's Profile"
@@ -195,16 +195,16 @@ const Hero = () => {
           >
             <motion.h2 
               variants={item}
-              className="text-3xl md:text-4xl font-bold mb-1"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1"
             >
               Hi, I'm <span className="neon-text">Manohar</span>
             </motion.h2>
             
             <motion.div 
               variants={item}
-              className="h-12 flex items-center mb-4"
+              className="h-8 sm:h-12 flex items-center justify-center md:justify-start mb-4"
             >
-              <h3 className="text-xl md:text-2xl font-medium">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-medium">
                 <span className="mr-2">I'm a</span>
                 <span className="neon-text relative">
                   {displayText}
@@ -215,7 +215,7 @@ const Hero = () => {
             
             <motion.p
               variants={item}
-              className="text-gray-300 mb-6 text-sm md:text-base"
+              className="text-gray-300 mb-6 text-xs sm:text-sm md:text-base max-w-md mx-auto md:mx-0"
             >
               Crafting digital experiences with clean code and modern design. 
               Building responsive and intuitive web applications.
@@ -223,7 +223,7 @@ const Hero = () => {
             
             <motion.div 
               variants={item}
-              className="flex flex-wrap gap-3 justify-center md:justify-start mb-4"
+              className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start mb-4"
             >
               <motion.div animate={floatingAnimation} className="inline-block">
                 <Link
@@ -232,7 +232,7 @@ const Hero = () => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="gradient-bg text-white font-medium py-2 px-4 text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:scale-105 hover:shadow-lg transition-all cursor-pointer"
+                  className="gradient-bg text-white font-medium py-1.5 sm:py-2 px-3 sm:px-4 text-xs sm:text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:scale-105 hover:shadow-lg transition-all cursor-pointer"
                 >
                   View Projects
                 </Link>
@@ -245,14 +245,14 @@ const Hero = () => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="border-2 border-[var(--main-color)] text-white font-medium py-2 px-4 text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:bg-[var(--main-color)]/10 transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
+                  className="border-2 border-[var(--main-color)] text-white font-medium py-1.5 sm:py-2 px-3 sm:px-4 text-xs sm:text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:bg-[var(--main-color)]/10 transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
                 >
                   Contact Me
                 </Link>
               </motion.div>
             </motion.div>
             
-            <motion.div variants={item} className="flex justify-center md:justify-start space-x-4 mt-4">
+            <motion.div variants={item} className="flex justify-center md:justify-start space-x-3 sm:space-x-4 mt-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
@@ -262,7 +262,7 @@ const Hero = () => {
                   className="text-gray-300 hover:text-[var(--main-color)] transition-colors hover-float"
                   aria-label={link.name}
                 >
-                  {link.icon}
+                  {React.cloneElement(link.icon, { className: "w-5 h-5 sm:w-6 sm:h-6" })}
                 </a>
               ))}
             </motion.div>

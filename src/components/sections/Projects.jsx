@@ -140,21 +140,21 @@ const Projects = () => {
         </motion.h2>
 
         {/* Carousel with exactly 3 cards */}
-        <div className="flex justify-center items-center gap-8 flex-wrap">
+        <div className="flex justify-center items-center gap-4 md:gap-8 flex-wrap">
           {getVisibleProjects().map((project, i) => {
             const isCenter = project.position === 'center';
             return (
               <motion.div
                 key={i}
                 animate={{
-                  scale: isCenter ? 1 : 0.92,
-                  opacity: isCenter ? 1 : 0.6,
+                  scale: isCenter ? 1 : [0.92, 0.92],
+                  opacity: isCenter ? 1 : [0.6, 0.6],
                 }}
                 transition={{ duration: 0.4 }}
-                className="w-[300px] md:w-[360px] lg:w-[380px] bg-[#060d1a]/80 border border-gray-700 rounded-xl overflow-hidden shadow-xl hover:shadow-cyan-500/20"
+                className="w-[280px] sm:w-[300px] md:w-[360px] lg:w-[380px] bg-[#060d1a]/80 border border-gray-700 rounded-xl overflow-hidden shadow-xl hover:shadow-cyan-500/20"
               >
                 <div className="flex flex-col h-full">
-                  <div className="relative h-48 md:h-56 overflow-hidden">
+                  <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
                     <img
                       src={project.imageUrl}
                       alt={project.title}
@@ -162,33 +162,33 @@ const Projects = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
                   </div>
-                  <div className="p-5 flex flex-col flex-grow">
+                  <div className="p-3 sm:p-5 flex flex-col flex-grow">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-                      <FaExternalLinkAlt className="text-gray-400" size={14} />
+                      <h3 className="text-base sm:text-lg font-semibold text-white">{project.title}</h3>
+                      <FaExternalLinkAlt className="text-gray-400" size={12} />
                     </div>
-                    <p className="text-gray-400 text-sm mb-3">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <p className="text-gray-400 text-xs sm:text-sm mb-3">{project.description}</p>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
                       {project.technologies.map((tech, i) => (
                         <TechBadge key={i} name={tech} />
                       ))}
                     </div>
-                    <div className="flex gap-3 mt-auto">
+                    <div className="flex gap-2 sm:gap-3 mt-auto">
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm border border-[#00f7ff]/30 text-[#00f7ff] bg-[#00f7ff]/10 hover:bg-[#00f7ff]/20 transition"
+                        className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm border border-[#00f7ff]/30 text-[#00f7ff] bg-[#00f7ff]/10 hover:bg-[#00f7ff]/20 transition"
                       >
-                        <FaExternalLinkAlt size={12} /> Live
+                        <FaExternalLinkAlt size={10} /> Live
                       </a>
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm bg-gray-800 text-white hover:bg-gray-700 transition"
+                        className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm bg-gray-800 text-white hover:bg-gray-700 transition"
                       >
-                        <FaGithub size={12} /> Code
+                        <FaGithub size={10} /> Code
                       </a>
                     </div>
                   </div>
@@ -199,18 +199,18 @@ const Projects = () => {
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-center gap-6 mt-8">
+        <div className="flex justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
           <button
             onClick={() => navigate('left')}
-            className="p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/10 transition"
+            className="p-2 sm:p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/10 transition"
           >
-            <FaArrowLeft />
+            <FaArrowLeft size={14} />
           </button>
           <button
             onClick={() => navigate('right')}
-            className="p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/10 transition"
+            className="p-2 sm:p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/10 transition"
           >
-            <FaArrowRight />
+            <FaArrowRight size={14} />
           </button>
         </div>
       </div>
