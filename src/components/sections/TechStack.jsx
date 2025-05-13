@@ -2,9 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaPython, FaJava, FaReact, FaNodeJs, FaDatabase,
-  FaCss3Alt, FaGitAlt, FaFigma, FaServer, FaLaptopCode,
-  FaRobot, FaCode, FaMicrochip, FaBrain
+  FaGitAlt, FaAws, FaDocker, FaBrain
 } from 'react-icons/fa';
+import { 
+  SiExpress, SiMongodb, SiJupyter,
+  SiGooglecolab, SiTensorflow, SiKeras,
+  SiScikitlearn
+} from 'react-icons/si';
 import SkillIcon from '../ui/SkillIcon';
 
 const TechStack = () => {
@@ -13,36 +17,23 @@ const TechStack = () => {
   // Floating dots background
   useEffect(() => {
     if (dotsContainerRef.current) {
-      // Create floating dots
       const container = dotsContainerRef.current;
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
       
-      // Clear previous dots
       container.innerHTML = '';
       
-      // Create new dots
       for (let i = 0; i < 30; i++) {
         const dot = document.createElement('div');
         dot.className = 'dot';
         
-        // Random position
         const x = Math.random() * containerWidth;
         const y = Math.random() * containerHeight;
-        
-        // Random size (1-3px)
         const size = 1 + Math.random() * 2;
-        
-        // Random opacity
         const opacity = 0.2 + Math.random() * 0.4;
-        
-        // Random animation duration
         const duration = 15 + Math.random() * 30;
-        
-        // Random animation delay
         const delay = Math.random() * 10;
         
-        // Apply styles
         dot.style.left = `${x}px`;
         dot.style.top = `${y}px`;
         dot.style.width = `${size}px`;
@@ -58,34 +49,16 @@ const TechStack = () => {
 
   const technologies = [
     { 
-      name: 'ML', 
-      icon: <FaBrain className="text-[#00f7ff] text-3xl" />,
-      level: 85,
-      category: 'AI'
-    },
-    { 
-      name: 'AI', 
-      icon: <FaRobot className="text-[#00f7ff] text-3xl" />,
-      level: 80,
-      category: 'AI'
-    },
-    { 
-      name: 'Java', 
-      icon: <FaJava className="text-[#00f7ff] text-3xl" />,
+      name: 'Python', 
+      icon: <FaPython className="text-[#00f7ff] text-3xl" />,
       level: 90,
       category: 'Languages'
     },
     { 
-      name: 'Python', 
-      icon: <FaPython className="text-[#00f7ff] text-3xl" />,
-      level: 95,
+      name: 'Java', 
+      icon: <FaJava className="text-[#00f7ff] text-3xl" />,
+      level: 85,
       category: 'Languages'
-    },
-    { 
-      name: 'Deep Learn', 
-      icon: <FaMicrochip className="text-[#00f7ff] text-3xl" />,
-      level: 75,
-      category: 'AI'
     },
     { 
       name: 'React', 
@@ -94,53 +67,77 @@ const TechStack = () => {
       category: 'Frontend'
     },
     { 
-      name: 'TailwindCSS', 
-      icon: <FaCss3Alt className="text-[#00f7ff] text-3xl" />,
-      level: 85,
-      category: 'Frontend'
-    },
-    { 
-      name: 'MongoDB', 
-      icon: <FaDatabase className="text-[#00f7ff] text-3xl" />,
-      level: 80,
-      category: 'Backend'
-    },
-    { 
       name: 'Node.js', 
       icon: <FaNodeJs className="text-[#00f7ff] text-3xl" />,
       level: 85,
       category: 'Backend'
     },
     { 
-      name: 'Frontend', 
-      icon: <FaCode className="text-[#00f7ff] text-3xl" />,
-      level: 90,
-      category: 'Frontend'
+      name: 'Express', 
+      icon: <SiExpress className="text-[#00f7ff] text-3xl" />,
+      level: 85,
+      category: 'Backend'
+    },
+    { 
+      name: 'MongoDB', 
+      icon: <SiMongodb className="text-[#00f7ff] text-3xl" />,
+      level: 85,
+      category: 'Backend'
+    },
+    { 
+      name: 'SQL', 
+      icon: <FaDatabase className="text-[#00f7ff] text-3xl" />,
+      level: 80,
+      category: 'Backend'
+    },
+    { 
+      name: 'TensorFlow', 
+      icon: <SiTensorflow className="text-[#00f7ff] text-3xl" />,
+      level: 80,
+      category: 'AI/ML'
+    },
+    { 
+      name: 'Keras', 
+      icon: <SiKeras className="text-[#00f7ff] text-3xl" />,
+      level: 80,
+      category: 'AI/ML'
+    },
+    { 
+      name: 'Scikit-learn', 
+      icon: <SiScikitlearn className="text-[#00f7ff] text-3xl" />,
+      level: 85,
+      category: 'AI/ML'
     },
     { 
       name: 'Git', 
       icon: <FaGitAlt className="text-[#00f7ff] text-3xl" />,
       level: 85,
-      category: 'Tools'
+      category: 'DevOps'
     },
     { 
-      name: 'Figma', 
-      icon: <FaFigma className="text-[#00f7ff] text-3xl" />,
-      level: 75,
-      category: 'Tools'
-    },
-    { 
-      name: 'Express', 
-      icon: <FaServer className="text-[#00f7ff] text-3xl" />,
+      name: 'Docker', 
+      icon: <FaDocker className="text-[#00f7ff] text-3xl" />,
       level: 80,
-      category: 'Backend'
+      category: 'DevOps'
+    },
+    { 
+      name: 'AWS', 
+      icon: <FaAws className="text-[#00f7ff] text-3xl" />,
+      level: 80,
+      category: 'DevOps'
     },
     { 
       name: 'Jupyter', 
-      icon: <FaLaptopCode className="text-[#00f7ff] text-3xl" />,
-      level: 85,
+      icon: <SiJupyter className="text-[#00f7ff] text-3xl" />,
+      level: 90,
       category: 'Tools'
     },
+    { 
+      name: 'Colab', 
+      icon: <SiGooglecolab className="text-[#00f7ff] text-3xl" />,
+      level: 90,
+      category: 'Tools'
+    }
   ];
 
   const staggerContainer = {
@@ -155,10 +152,8 @@ const TechStack = () => {
 
   return (
     <section id="techstack" className="py-8 relative overflow-hidden bg-gradient-to-b from-[#060b13] to-[#0a141f]">
-      {/* Floating dots background */}
       <div ref={dotsContainerRef} className="dots-bg"></div>
       
-      {/* Background glow effects */}
       <div className="hero-glow bottom-0 left-1/4 opacity-10"></div>
       <div className="hero-glow top-1/2 right-1/4 opacity-10"></div>
       
@@ -173,6 +168,9 @@ const TechStack = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="text-[#00f7ff]">Tech</span> <span className="text-white">Stack</span>
             </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Core technologies I specialize in
+            </p>
           </motion.div>
 
           <motion.div
@@ -180,7 +178,7 @@ const TechStack = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 justify-items-center"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-items-center"
           >
             {technologies.map((tech, index) => (
               <SkillIcon
