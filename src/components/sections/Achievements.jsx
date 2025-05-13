@@ -1,133 +1,82 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaTrophy, FaMedal, FaAward, FaCertificate } from 'react-icons/fa';
+import {
+  FaMedal,
+  FaStar,
+  FaUserFriends,
+  FaRunning,
+  FaAward,
+} from 'react-icons/fa';
 
 const Achievements = () => {
   const achievements = [
     {
-      icon: <FaTrophy className="text-yellow-500" />,
-      title: "Coding Excellence",
-      items: [
-        "Secured Top 10% ranking on LeetCode with 250+ problems solved",
-        "Achieved 5-star status on HackerRank in Problem Solving",
-        "Qualified for final rounds in multiple national coding competitions"
-      ]
+      icon: <FaMedal className="text-yellow-400" />,
+      title: "Winner",
+      detail: "BidTheCode Coding Competition, VIT-AP (1st/50, 2025)",
     },
     {
-      icon: <FaMedal className="text-blue-500" />,
-      title: "Education & Leadership",
-      items: [
-        "Graduated with Honors (8.6 CGPA) in Computer Science and Engineering",
-        "Led a team of 5 developers for the college technical fest project",
-        "Student coordinator for college technical symposium"
-      ]
+      icon: <FaUserFriends className="text-blue-400" />,
+      title: "Captain, Eagles Sports Group",
+      detail: "Led 250+ members in training, competitions, mentorship",
     },
     {
-      icon: <FaAward className="text-green-500" />,
-      title: "Recognition & Hackathons",
-      items: [
-        "Selected among top 10 projects in university innovation fair",
-        "Winner of 24-hour institutional hackathon",
-        "Published technical paper in international journal"
-      ]
+      icon: <FaUserFriends className="text-purple-400" />,
+      title: "Math Group Leader",
+      detail: "Peer mentoring, reviewed assignments, workshops",
     },
     {
-      icon: <FaCertificate className="text-purple-500" />,
-      title: "Certifications & Skills",
-      items: [
-        "Completed advanced certifications in Full Stack Development and ML",
-        "Trained 50+ juniors in programming fundamentals",
-        "Regular contributor to open-source projects"
-      ]
-    }
+      icon: <FaRunning className="text-pink-400" />,
+      title: "State-Level Athlete",
+      detail: "1500m, 800m, and 5km walk competitions",
+    },
+    {
+      icon: <FaAward className="text-indigo-400" />,
+      title: "Performer",
+      detail: "Acted in skits and drama for Republic Day & Jubilee",
+    },
+    {
+      icon: <FaMedal className="text-orange-400" />,
+      title: "Finalist",
+      detail: "VIT Mathematical Meet (4th/200, 2020)",
+    },
   ];
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4
-      }
-    }
-  };
-
   return (
-    <section id="achievements" className="py-8 md:py-12 bg-white dark:bg-gray-800 relative overflow-hidden">
-      {/* Background glow effects */}
-      <div className="hero-glow top-1/3 right-0 opacity-5"></div>
-      <div className="hero-glow bottom-1/3 left-0 opacity-5"></div>
-      
-      <div className="container mx-auto px-2 relative z-10">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="max-w-6xl mx-auto"
+    <section id="achievements" className="bg-[#040812] py-16 px-4">
+      <div className="max-w-6xl mx-auto text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-white mb-10"
         >
-          <motion.div variants={item} className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-              Achievements & Activities
-            </h2>
-            <div className="section-divider"></div>
-            <p className="mt-3 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-base">
-              Recognitions, competitions, and extracurricular activities
-            </p>
-          </motion.div>
+          <span className="text-[#00f7ff]">Achievements</span> & Activities
+        </motion.h2>
 
-          <motion.div
-            variants={container}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
-          >
-            {achievements.map((achievement, index) => (
-              <motion.div
-                key={index}
-                variants={item}
-                className="modern-card glass-effect p-4 hover-float"
-                whileHover={{ 
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="text-3xl mr-4 p-2.5 glass-effect rounded-full">{achievement.icon}</div>
-                  <h3 className="text-lg font-bold gradient-text">
-                    {achievement.title}
-                  </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {achievements.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.4 }}
+              className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-lg p-5 text-left hover:shadow-lg transition-all"
+            >
+              <div className="flex items-center mb-3">
+                <div className="text-xl p-2 bg-white/10 rounded-full mr-3">
+                  {item.icon}
                 </div>
-                <ul className="space-y-2">
-                  {achievement.items.map((item, itemIndex) => (
-                    <motion.li 
-                      key={itemIndex} 
-                      className="flex items-start"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 + itemIndex * 0.05 }}
-                      viewport={{ once: true }}
-                    >
-                      <span className="bg-gradient-to-r from-blue-600 to-indigo-600 w-1.5 h-1.5 rounded-full mt-2 mr-2 flex-shrink-0"></span>
-                      <span className="text-gray-700 dark:text-gray-300 text-sm">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+              </div>
+              <p className="text-sm text-gray-300">{item.detail}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Achievements; 
+export default Achievements;

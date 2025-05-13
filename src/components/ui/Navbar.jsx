@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { BiCodeAlt } from 'react-icons/bi';
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -22,15 +23,38 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const navLinks = [
     { name: 'Home', to: 'hero' },
     { name: 'About', to: 'about' },
-    { name: 'Tech Stack', to: 'techstack' },
+    { name: 'Skills', to: 'techstack' },
     { name: 'Projects', to: 'projects' },
     { name: 'Achievements', to: 'achievements' },
+  ];
+
+  const socialLinks = [
+    {
+      name: 'LinkedIn',
+      icon: <FaLinkedin size={20} />,
+      url: 'https://www.linkedin.com/in/manohar-reddyk/',
+    },
+    {
+      name: 'GitHub',
+      icon: <FaGithub size={20} />,
+      url: 'https://github.com/manoharreddy44',
+    },
+    {
+      name: 'Email',
+      icon: <FaEnvelope size={20} />,
+      url: 'mailto:koppala.manoharreddy@gmail.com',
+    },
+    {
+      name: 'Codolio',
+      icon: <BiCodeAlt size={20} />,
+      url: 'https://codolio.com/profile/Manohar123',
+    },
   ];
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled 
-        ? 'backdrop-blur-md glass-effect py-3' 
+        ? 'backdrop-blur-md bg-black/50 py-3' 
         : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,14 +66,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               smooth={true}
               offset={-70}
               duration={500}
-              className="text-2xl font-bold cursor-pointer hover-float flex items-center"
+              className="text-2xl font-bold cursor-pointer flex items-center"
             >
-              <span className="text-[var(--main-color)]">K</span>
-              <span className="text-white">folio</span>
+              <span className="text-[#00f7ff] text-3xl">P</span>
+              <span className="text-white text-xl">folio</span>
             </Link>
           </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-10">
+          <div className="hidden md:flex items-center justify-center flex-1 px-16">
+            <div className="flex space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -58,65 +82,42 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="px-1 py-2 text-base font-medium cursor-pointer hover-float transition-colors text-white hover:text-[var(--main-color)]"
-                  activeClass="text-[var(--main-color)]"
+                  className="text-white hover:text-[#00f7ff] transition-colors cursor-pointer text-sm font-medium"
+                  activeClass="text-[#00f7ff]"
                 >
                   {link.name}
                 </Link>
               ))}
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full hover:bg-[var(--dark-bg)] transition-colors hover-float"
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? 
-                  <FaSun className="text-yellow-400 text-lg" /> : 
-                  <FaMoon className="text-[var(--main-color)] text-lg" />
-                }
-              </button>
             </div>
           </div>
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 mr-2 rounded-full hover:bg-[var(--dark-bg)] transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-[var(--main-color)]" />}
-            </button>
+          <div className="hidden md:flex items-center space-x-4">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#00f7ff] transition-colors"
+                aria-label={link.name}
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md focus:outline-none"
-              aria-expanded="false"
+              className="text-white hover:text-[#00f7ff] transition-colors"
             >
-              <span className="sr-only">Open main menu</span>
-              <div className="w-6 flex flex-col items-center justify-center relative">
-                <span
-                  className={`h-0.5 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${
-                    isOpen ? 'rotate-45 translate-y-1' : 'mb-1'
-                  }`}
-                />
-                <span
-                  className={`h-0.5 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${
-                    isOpen ? 'opacity-0' : 'mb-1'
-                  }`}
-                />
-                <span
-                  className={`h-0.5 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${
-                    isOpen ? '-rotate-45 -translate-y-1' : ''
-                  }`}
-                />
-              </div>
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
           </div>
         </div>
       </div>
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-96' : 'max-h-0'
-        }`}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 glass-effect mt-2 mx-4 rounded-lg">
+      <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-black/50 backdrop-blur-md mt-2">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -125,13 +126,27 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               smooth={true}
               offset={-70}
               duration={500}
-              className="block px-3 py-2 rounded-md text-base font-medium cursor-pointer hover:text-[var(--main-color)] transition-colors text-white"
-              activeClass="text-[var(--main-color)]"
+              className="block px-3 py-2 text-base font-medium text-white hover:text-[#00f7ff] transition-colors"
+              activeClass="text-[#00f7ff]"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>
           ))}
+          <div className="flex space-x-4 px-3 py-2">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#00f7ff] transition-colors"
+                aria-label={link.name}
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

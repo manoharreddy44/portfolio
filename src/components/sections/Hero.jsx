@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowDown, FaCode } from 'react-icons/fa';
 import { BiCodeAlt } from 'react-icons/bi';
 import { Link } from 'react-scroll';
 
@@ -126,23 +126,23 @@ const Hero = () => {
     {
       name: 'LinkedIn',
       icon: <FaLinkedin className="w-6 h-6" />,
-      url: 'https://www.linkedin.com/in/your-linkedin',
+      url: 'https://www.linkedin.com/in/manohar-reddyk/',
     },
     {
       name: 'GitHub',
       icon: <FaGithub className="w-6 h-6" />,
-      url: 'https://github.com/your-github',
+      url: 'https://github.com/manoharreddy44',
+    },
+    {
+      name: 'Codolio',
+      icon: <FaCode className="w-6 h-6" />,
+      url: 'https://codolio.com/profile/Manohar123',
     },
     {
       name: 'Email',
       icon: <FaEnvelope className="w-6 h-6" />,
-      url: 'mailto:your-email@example.com',
-    },
-    {
-      name: 'Portfolio',
-      icon: <BiCodeAlt className="w-6 h-6" />,
-      url: '#projects',
-    },
+      url: 'mailto:koppala.manoharreddy@gmail.com',
+    }
   ];
 
   return (
@@ -229,10 +229,9 @@ const Hero = () => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="gradient-bg text-white font-medium py-2 px-4 text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center"
+                  className="gradient-bg text-white font-medium py-2 px-4 text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:scale-105 hover:shadow-lg transition-all cursor-pointer"
                 >
                   View Projects
-                  <BiCodeAlt className="ml-2" />
                 </Link>
               </motion.div>
               
@@ -243,10 +242,9 @@ const Hero = () => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="border-2 border-[var(--main-color)] text-white font-medium py-2 px-4 text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:bg-[var(--main-color)]/10 transition-colors"
+                  className="border-2 border-[var(--main-color)] text-white font-medium py-2 px-4 text-sm rounded-full btn-effect relative overflow-hidden inline-flex items-center hover:bg-[var(--main-color)]/10 transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
                 >
                   Contact Me
-                  <FaEnvelope className="ml-2" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -267,24 +265,6 @@ const Hero = () => {
             </motion.div>
           </motion.div>
         </div>
-        
-        {/* Scroll down indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          <Link 
-            to="about" 
-            spy={true} 
-            smooth={true} 
-            offset={-70} 
-            duration={500}
-            className="text-[var(--main-color)] hover:text-white transition-colors cursor-pointer"
-          >
-            <FaArrowDown />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

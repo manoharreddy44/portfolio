@@ -10,30 +10,12 @@ import Contact from './components/sections/Contact';
 import Footer from './components/ui/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    // Check for saved user preference or system preference
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode !== null) {
-      return savedMode === 'true';
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Update document class for Tailwind dark mode
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Add dark mode class permanently
+    document.documentElement.classList.add('dark');
     
-    // Save preference in localStorage
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-  
-  useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
@@ -41,10 +23,6 @@ function App() {
     
     return () => clearTimeout(timer);
   }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
 
   return (
     <div className="min-h-screen text-white transition-colors duration-300 relative">
@@ -114,7 +92,7 @@ function App() {
         transition={{ duration: 0.5, delay: loading ? 2 : 0 }}
         className="relative z-10"
       >
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Navbar />
         <main className="space-y-2 px-1">
           <Hero />
           <About />

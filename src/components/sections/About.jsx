@@ -84,8 +84,8 @@ const About = () => {
             </h2>
             
             <p className="text-center text-gray-300 max-w-3xl mx-auto mb-8">
-              I am Karthik, a passionate Full-Stack Developer, AI/ML enthusiast, and UI/UX designer. I thrive on 
-              building scalable web applications and exploring the latest technologies.
+              I am Manohar, a passionate Full-Stack Developer, AI/ML enthusiast, and problem solver. I thrive on 
+              building efficient, scalable applications and exploring the frontier of technology with curiosity and commitment.
             </p>
           </motion.div>
 
@@ -104,18 +104,18 @@ const About = () => {
                 </div>
                 
                 <h3 className="font-bold text-lg text-white text-center">
-                  Bachelor of CSE
+                  B.Tech in Computer
                 </h3>
                 <h3 className="font-bold text-lg text-white text-center mb-1.5">
-                  [AI/ML]
+                  Science and Engineering
                 </h3>
                 
                 <p className="text-center text-gray-400 mb-1.5 text-sm">
-                  Gayatri Vidya Parishad College of Engineering
+                  VIT-AP University, Amaravati
                 </p>
                 
                 <p className="text-[#00f7ff] text-center text-sm">
-                  9.4 CGPA | 2023 - 2026
+                  9.24 CGPA | 2022 - 2026
                 </p>
               </div>
             </motion.div>
@@ -134,18 +134,18 @@ const About = () => {
                 </div>
                 
                 <h3 className="font-bold text-lg text-white text-center">
-                  Diploma in Computer
+                  Board of Intermediate
                 </h3>
                 <h3 className="font-bold text-lg text-white text-center mb-1.5">
-                  Engineering
+                  Education (MPC)
                 </h3>
                 
                 <p className="text-center text-gray-400 mb-1.5 text-sm">
-                  A.A.N.M AND V.V.R.S.R Polytechnic
+                  Sri Chaitanya Junior College, Vijayawada
                 </p>
                 
                 <p className="text-[#00f7ff] text-center text-sm">
-                  93.91% | 2020 - 2023
+                  9.79 GPA | 2020 - 2022
                 </p>
               </div>
             </motion.div>
@@ -164,18 +164,18 @@ const About = () => {
                 </div>
                 
                 <h3 className="font-bold text-lg text-white text-center">
-                  Board of Secondary
+                  Indian School Certificate
                 </h3>
                 <h3 className="font-bold text-lg text-white text-center mb-1.5">
-                  Education
+                  Examinations
                 </h3>
                 
                 <p className="text-center text-gray-400 mb-1.5 text-sm">
-                  Andhra Nalanda Municipal High School
+                  Emmaus Swiss High School, Palamaner
                 </p>
                 
                 <p className="text-[#00f7ff] text-center text-sm">
-                  9.8 GPA | 2019 - 2020
+                  9.2 CGPA | 2019 - 2020
                 </p>
               </div>
             </motion.div>

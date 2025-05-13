@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode } from 'react-icons/fa';
 import { BiCodeAlt } from 'react-icons/bi';
 
 const Footer = () => {
@@ -10,22 +10,22 @@ const Footer = () => {
     {
       name: 'LinkedIn',
       icon: <FaLinkedin className="w-5 h-5" />,
-      url: 'https://www.linkedin.com/in/your-linkedin'
+      url: 'https://www.linkedin.com/in/manohar-reddyk/'
     },
     {
       name: 'GitHub',
       icon: <FaGithub className="w-5 h-5" />,
-      url: 'https://github.com/your-github'
+      url: 'https://github.com/manoharreddy44'
+    },
+    {
+      name: 'Codolio',
+      icon: <FaCode className="w-5 h-5" />,
+      url: 'https://codolio.com/profile/Manohar123'
     },
     {
       name: 'Email',
       icon: <FaEnvelope className="w-5 h-5" />,
-      url: 'mailto:your.email@example.com'
-    },
-    {
-      name: 'Portfolio',
-      icon: <BiCodeAlt className="w-5 h-5" />,
-      url: '#projects'
+      url: 'mailto:koppala.manoharreddy@gmail.com'
     }
   ];
 
@@ -42,8 +42,8 @@ const Footer = () => {
               duration={500}
               className="flex items-center cursor-pointer hover-float"
             >
-              <span className="text-[var(--main-color)] text-xl font-bold">K</span>
-              <span className="text-white text-xl font-normal">folio</span>
+              <span className="text-[#00f7ff] text-3xl">P</span>
+              <span className="text-white text-xl">folio</span>
             </Link>
           </div>
           
