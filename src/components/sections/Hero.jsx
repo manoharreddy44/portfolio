@@ -176,9 +176,12 @@ const Hero = () => {
               
               {/* Profile image */}
               <div className="absolute inset-3 rounded-full overflow-hidden profile-image flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--main-color)]/50 to-[var(--gradient-end)]/50 flex items-center justify-center">
-                  <p className="text-white text-lg font-medium">Profile Photo</p>
-                </div>
+                <img 
+                  src="/images/profile.jpg" 
+                  alt="Manohar's Profile"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--main-color)]/10 to-[var(--gradient-end)]/10 hover:opacity-0 transition-opacity duration-300"></div>
               </div>
             </div>
           </motion.div>
