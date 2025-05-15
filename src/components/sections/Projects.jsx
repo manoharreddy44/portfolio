@@ -51,16 +51,16 @@ const Projects = () => {
       description: "Real-time sentiment analysis of tweets linked to stock market performance using ML.",
       technologies: ["Python", "TextBlob", "SQLite", "yFinance", "Matplotlib"],
       imageUrl: "/images/sentimental.jpg.jpg",
-      liveUrl: "#",
+      liveUrl: null,
       githubUrl: "https://github.com/manoharreddy44/sentimental_analysis",
     },
     {
-      title: "Loan Prediction Using ML",
-      description: "A machine learning model for classifying loan approvals with high accuracy and real-time prediction capability.",
-      technologies: ["Python", "Scikit-learn", "Logistic Regression", "KNN", "Colab"],
+      title: "Auto ML Model Evaluator",
+      description: "Advanced ML model evaluation system that automatically assesses 7 core algorithms across regression and classification tasks, achieving 95%+ accuracy on 1000+ samples with 80% reduced evaluation time.",
+      technologies: ["Python", "Scikit-learn", "Matplotlib", "Google Colab"],
       imageUrl: "/images/loan.jpg.jpg",
-      liveUrl: "https://colab.research.google.com",
-      githubUrl: "#",
+      liveUrl: null,
+      githubUrl: "https://colab.research.google.com/drive/19CdB-xgyo8noTXQyKvbu-s13gZmDQA7g?usp=sharing",
     },
     {
       title: "Expense Management App",
@@ -174,14 +174,22 @@ const Projects = () => {
                       ))}
                     </div>
                     <div className="flex gap-2 sm:gap-3 mt-auto">
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm border border-[#00f7ff]/30 text-[#00f7ff] bg-[#00f7ff]/10 hover:bg-[#00f7ff]/20 transition"
-                      >
-                        <FaExternalLinkAlt size={10} /> Live
-                      </a>
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm border border-[#00f7ff]/30 text-[#00f7ff] bg-[#00f7ff]/10 hover:bg-[#00f7ff]/20 transition"
+                        >
+                          <FaExternalLinkAlt size={10} /> Live
+                        </a>
+                      ) : (
+                        <span
+                          className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm border border-gray-600 text-gray-500 bg-gray-800/50 cursor-not-allowed opacity-50"
+                        >
+                          <FaExternalLinkAlt size={10} /> Live
+                        </span>
+                      )}
                       <a
                         href={project.githubUrl}
                         target="_blank"

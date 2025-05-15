@@ -5,7 +5,7 @@ import { BiCodeAlt } from 'react-icons/bi';
 import { Link } from 'react-scroll';
 
 // Array of roles for typewriter effect
-const roles = ["Developer", "Designer", "Problem Solver", "Creator"];
+const roles = ["Software Developer", "Problem Solver", "AI/ML Enthusiast"];
 
 const Hero = () => {
   const dotsContainerRef = useRef(null);
@@ -205,7 +205,6 @@ const Hero = () => {
               className="h-8 sm:h-12 flex items-center justify-center md:justify-start mb-4"
             >
               <h3 className="text-lg sm:text-xl md:text-2xl font-medium">
-                <span className="mr-2">I'm a</span>
                 <span className="neon-text relative">
                   {displayText}
                   <span className="border-r-2 border-[var(--main-color)] ml-1 animate-blink"></span>
