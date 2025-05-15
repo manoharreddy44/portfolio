@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (imageUrl) => {
+    setLoadedImages(prev => ({ ...prev, [imageUrl]: true }));
+  };
 
   const projects = [
     {
@@ -138,6 +143,30 @@ const Projects = () => {
         >
           <span className="text-[#00f7ff]">My</span> <span className="text-white">Projects</span>
         </motion.h2>
+        
+        <div className="text-center mb-8">
+          <p className="text-gray-400">
+            <span className="text-[#00f7ff]">{activeIndex + 1}</span>
+            <span className="mx-2">/</span>
+            <span>{projects.length}</span>
+          </p>
+        </div>
+
+        {/* Project navigation dots */}
+        <div className="flex justify-center gap-2 mb-8">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === activeIndex 
+                  ? 'bg-[#00f7ff] w-6' 
+                  : 'bg-gray-600 hover:bg-gray-500'
+              }`}
+              aria-label={`Go to project ${index + 1}`}
+            />
+          ))}
+        </div>
 
         {/* Carousel with exactly 3 cards */}
         <div className="flex justify-center items-center gap-4 md:gap-8 flex-wrap">
@@ -151,21 +180,27 @@ const Projects = () => {
                   opacity: isCenter ? 1 : [0.6, 0.6],
                 }}
                 transition={{ duration: 0.4 }}
-                className="w-[280px] sm:w-[300px] md:w-[360px] lg:w-[380px] bg-[#060d1a]/80 border border-gray-700 rounded-xl overflow-hidden shadow-xl hover:shadow-cyan-500/20"
+                className="w-[280px] sm:w-[300px] md:w-[360px] lg:w-[380px] bg-[#060d1a]/80 border border-gray-700 rounded-xl overflow-hidden shadow-xl hover:shadow-cyan-500/20 transform transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="flex flex-col h-full">
                   <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
+                    {!loadedImages[project.imageUrl] && (
+                      <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
+                    )}
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter brightness-90 hover:brightness-100 ${
+                        loadedImages[project.imageUrl] ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      onLoad={() => handleImageLoad(project.imageUrl)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
                   </div>
                   <div className="p-3 sm:p-5 flex flex-col flex-grow">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-white">{project.title}</h3>
-                      <FaExternalLinkAlt className="text-gray-400" size={12} />
+                    <div className="flex items-center justify-between mb-2 group">
+                      <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-[#00f7ff] transition-colors">{project.title}</h3>
+                      <FaExternalLinkAlt className="text-gray-400 group-hover:text-[#00f7ff] transition-colors" size={12} />
                     </div>
                     <p className="text-gray-400 text-xs sm:text-sm mb-3">{project.description}</p>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
@@ -208,18 +243,22 @@ const Projects = () => {
 
         {/* Navigation Buttons */}
         <div className="flex justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate('left')}
-            className="p-2 sm:p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/10 transition"
+            className="p-2 sm:p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/20 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
           >
             <FaArrowLeft size={14} />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate('right')}
-            className="p-2 sm:p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/10 transition"
+            className="p-2 sm:p-3 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-800/20 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
           >
             <FaArrowRight size={14} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>
