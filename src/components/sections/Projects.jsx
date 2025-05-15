@@ -5,6 +5,50 @@ import { FaExternalLinkAlt, FaGithub, FaArrowLeft, FaArrowRight } from 'react-ic
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState({});
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (document.activeElement.tagName === 'INPUT' || 
+          document.activeElement.tagName === 'TEXTAREA') {
+        return;
+      }
+      
+      if (e.key === 'ArrowLeft') {
+        navigate('left');
+      } else if (e.key === 'ArrowRight') {
+        navigate('right');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
+  // Add touch support
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; // minimum distance for swipe
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        navigate('right');
+      } else {
+        navigate('left');
+      }
+    }
+  };
 
   const handleImageLoad = (imageUrl) => {
     setLoadedImages(prev => ({ ...prev, [imageUrl]: true }));
@@ -131,7 +175,14 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="relative bg-[#040812] py-8 px-4 overflow-hidden">
+    <section 
+      id="projects" 
+      ref={sectionRef}
+      className="relative bg-[#040812] py-8 px-4 overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div ref={dotsContainerRef} className="absolute inset-0 z-0 pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">

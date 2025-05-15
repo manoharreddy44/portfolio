@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaLaptopCode, FaSchool } from 'react-icons/fa';
+import { FaGraduationCap, FaLaptopCode, FaSchool, FaCode } from 'react-icons/fa';
 
 const About = () => {
   const fadeIn = {
@@ -62,6 +62,33 @@ const About = () => {
     }
   }, []);
 
+  const timeline = [
+    {
+      year: "2022-2026",
+      title: "B.Tech in Computer Science",
+      subtitle: "VIT-AP University",
+      icon: <FaGraduationCap />,
+      details: "CGPA: 9.24",
+      color: "cyan"
+    },
+    {
+      year: "2024",
+      title: "Full Stack Development",
+      subtitle: "Self-Learning & Projects",
+      icon: <FaCode />,
+      details: "Built multiple web applications using MERN stack",
+      color: "blue"
+    },
+    {
+      year: "2023",
+      title: "Machine Learning",
+      subtitle: "Coursework & Projects",
+      icon: <FaLaptopCode />,
+      details: "Implemented various ML algorithms and models",
+      color: "purple"
+    }
+  ];
+
   return (
     <section id="about" className="py-8 relative overflow-hidden">
       {/* Floating dots background */}
@@ -88,6 +115,45 @@ const About = () => {
               building efficient, scalable applications and exploring the frontier of technology with curiosity and commitment.
             </p>
           </motion.div>
+
+          {/* Timeline Section */}
+          <div className="mt-12 relative">
+            {/* Timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[var(--main-color)]/50 to-transparent"></div>
+            
+            {/* Timeline items */}
+            {timeline.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className={`relative flex items-center mb-8 ${
+                  index % 2 === 0 ? 'justify-start' : 'justify-end'
+                }`}
+              >
+                {/* Content */}
+                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                  <div className="bg-[#0a141f] p-4 rounded-lg border border-gray-800 hover:border-[var(--main-color)]/30 transition-all duration-300">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`text-${item.color}-400`}>{item.icon}</span>
+                      <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-1">{item.subtitle}</p>
+                    <p className="text-[var(--main-color)] text-xs">{item.details}</p>
+                  </div>
+                </div>
+
+                {/* Year bubble */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-[#0a141f] border-4 border-[var(--main-color)]/30 flex items-center justify-center">
+                  <span className="text-xs font-bold text-[var(--main-color)]">
+                    {item.year.split('-')[0]}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Education Card 1 */}

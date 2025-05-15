@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaArrowUp } from 'react-icons/fa';
 import Navbar from './components/ui/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
@@ -11,6 +12,23 @@ import Footer from './components/ui/Footer';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
     // Add dark mode class permanently
@@ -53,7 +71,8 @@ function App() {
                 ></motion.div>
                 <motion.div 
                   animate={{ 
-                    rotate: -360
+                    rotate: -360,
+                    scale: [1, 0.8, 1]
                   }}
                   transition={{ 
                     duration: 2, 
@@ -64,7 +83,8 @@ function App() {
                 ></motion.div>
                 <motion.div 
                   animate={{ 
-                    rotate: 360
+                    rotate: 360,
+                    scale: [1, 1.1, 1]
                   }}
                   transition={{ 
                     duration: 2.5, 
@@ -80,7 +100,21 @@ function App() {
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
                 Loading Portfolio
+                <span className="loading-dots">...</span>
               </motion.h2>
+              <motion.div
+                className="w-48 h-1 bg-gray-800 rounded-full mt-4 mx-auto overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <motion.div
+                  className="h-full bg-[var(--main-color)]"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                />
+              </motion.div>
             </div>
           </motion.div>
         ) : null}
@@ -102,6 +136,23 @@ function App() {
           <Contact />
         </main>
         <Footer />
+
+        {/* Back to Top Button */}
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 p-3 rounded-full bg-[var(--main-color)]/20 border border-[var(--main-color)]/30 text-[var(--main-color)] hover:bg-[var(--main-color)]/30 transition-all duration-300 z-50"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FaArrowUp size={20} />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   );
